@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Saúde Cardiovascular</title>
+    <style>
+        /* Configurações Gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f5f5dc; /* Bege */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #ffb6c1; /* Rosa Claro */
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            color: #5a5a5a;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Navegação/Botões */
+        nav {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-nav {
+            background-color: #ffe4e1;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            color: #5a5a5a;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-nav:hover {
+            background-color: #ffc0cb;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: #000;
+        }
+
+        /* Seções de Conteúdo */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .section {
+            display: none;
+            background: #fffdf5;
+            padding: 30px;
+            border-radius: 15px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 { color: #d87093; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+
+        /* Estilo da Calculadora de IMC */
+        .calculadora-imc {
+            background-color: #ffeef2;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ffb6c1;
+            margin-top: 20px;
+        }
+
+        .calculadora-imc input {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100px;
+        }
+
+        .btn-calc {
+            background-color: #d87093;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-calc:hover {
+            background-color: #c71585;
+        }
+
+        #resultado-imc {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #5a5a5a;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Cuidado Cardiovascular</h1>
+    <nav>
+        <button class="btn-nav" onclick="showSection('sobre')">A Área de Cardiologia</button>
+        <button class="btn-nav" onclick="showSection('riscos')">Riscos da Área</button>
+        <button class="btn-nav" onclick="showSection('saude')">Saúde Cardiovascular</button>
+        <button class="btn-nav" onclick="showSection('estilo')">Estilo de Vida</button>
+    </nav>
+</header>
+
+<div class="container">
+    <section id="sobre" class="section active">
+        <h2>Como funciona a Cardiologia</h2>
+        <p>A cardiologia é a especialidade médica que se ocupa do diagnóstico e tratamento das doenças que acometem o coração e os outros componentes do sistema circulatório.</p>
+    </section>
+
+    <section id="riscos" class="section">
+        <h2>Principais Riscos e Doenças</h2>
+        <ul>
+            <li><strong>Infarto Agudo do Miocárdio:</strong> Interrupção do fluxo sanguíneo.</li>
+            <li><strong>Hipertensão:</strong> Pressão alta crônica.</li>
+            <li><strong>AVC:</strong> Complicações no fluxo cerebral.</li>
+            <li><strong>Sedentarismo:</strong> Risco aumentado de placas de gordura.</li>
+        </ul>
+    </section>
+
+    <section id="saude" class="section">
+        <h2>O que comer (e o que evitar)</h2>
+        <p>A alimentação é o combustível do seu coração:</p>
+        <ul>
+            <li><strong>Consumir:</strong> Azeite de oliva, peixes (Ômega-3), frutas vermelhas e aveia.</li>
+            <li><strong>Evitar:</strong> Gorduras trans, excesso de sal e embutidos.</li>
+        </ul>
+
+        <div class="calculadora-imc">
+            <h3>Calculadora de IMC (Triagem Rápida)</h3>
+            <p>O excesso de peso é um fator de risco cardiovascular. Calcule o seu abaixo:</p>
+            <input type="number" id="peso" placeholder="Peso (kg)" step="0.1">
+            <input type="number" id="altura" placeholder="Altura (m)" step="0.01">
+            <button class="btn-calc" onclick="calcularIMC()">Calcular</button>
+            <div id="resultado-imc"></div>
+        </div>
+    </section>
+
+    <section id="estilo" class="section">
+        <h2>Rotina Saudável</h2>
+        <p>A recomendação da OMS é de pelo menos 150 minutos de atividade moderada por semana.</p>
+        <ul>
+            <li><strong>Caminhada ou Corrida:</strong> Fortalece o coração.</li>
+            <li><strong>Treino de Força:</strong> Controle metabólico.</li>
+            <li><strong>Causas:</strong> Tabagismo, estresse e obesidade.</li>
+        </ul>
+    </section>
+</div>
+
+<script>
+    // Função para trocar abas
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => section.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Função da Calculadora de IMC (Lógica adaptada do C++)
+    function calcularIMC() {
+        const peso = document.getElementById('peso').value;
+        const altura = document.getElementById('altura').value;
+        const display = document.getElementById('resultado-imc');
+
+        if (peso > 0 && altura > 0) {
+            const imc = (peso / (altura * altura)).toFixed(2);
+            let classificacao = "";
+
+            if (imc < 18.5) classificacao = "Abaixo do peso";
+            else if (imc < 25) classificacao = "Peso normal";
+            else if (imc < 30) classificacao = "Sobrepeso";
+            else classificacao = "Obesidade (Alerta Cardiovascular!)";
+
+            display.innerHTML = `Seu IMC é ${imc} (${classificacao}).`;
+        } else {
+            display.innerHTML = "Por favor, insira valores válidos.";
+        }
+    }
+</script>
+
+</body>
+</html>

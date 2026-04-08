@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    int idade;
+    float colesterol;
+
+    cout << "--- Analise de Risco Cardiovascular Simples ---" << endl;
+    cout << "Digite a idade do paciente: ";
+    cin >> idade;
+    cout << "Digite o nivel de colesterol (mg/dL): ";
+    cin >> colesterol;
+
+    cout << "\nResultado da Triagem:" << endl;
+    if (idade > 50 || colesterol > 200) {
+        cout << "ALERTA: O paciente apresenta fatores de risco. Recomenda-se consulta com cardiologista." << endl;
+    } else {
+        cout << "STATUS: Níveis dentro da normalidade para triagem basica." << endl;
+    }
+
+    return 0;
+}
